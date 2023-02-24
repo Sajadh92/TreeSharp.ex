@@ -2,6 +2,8 @@
 
 TreeSharp is a C# class library that simplifies working with tree structures in your code. With TreeSharp, you can easily build a list of items as a tree, and retrieve all children, parents, and leaves of a specific item within that tree.
 
+[**nuget** | V1.0.1](https://www.nuget.org/packages/TreeSharp.ex)
+
 ## Features
 
 - `GetTree` : builds a tree from a list of items
