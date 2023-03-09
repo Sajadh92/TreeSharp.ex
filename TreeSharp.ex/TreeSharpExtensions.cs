@@ -87,8 +87,6 @@ public static class TreeSharpExtensions
         if (include_start_node)
         {
             inner.Add(start_node);
-
-            depth--;
         }
 
         if (depth != null && depth <= 0)
@@ -119,8 +117,6 @@ public static class TreeSharpExtensions
             {
                 inner.Add(start_node);
             }
-
-            depth--;
         }
 
         if (depth != null && depth <= 0)
