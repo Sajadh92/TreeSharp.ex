@@ -1,4 +1,4 @@
-﻿namespace TreeSharp;
+﻿namespace TreeSharp.ex;
 
 public static class TreeSharpExtensions
 {
