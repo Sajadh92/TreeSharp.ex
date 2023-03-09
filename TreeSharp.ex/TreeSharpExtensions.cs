@@ -136,7 +136,15 @@ public static class TreeSharpExtensions
         return inner;
     }
 
-    public static List<T> GetLeaves<T, K>(this List<T> collection, Func<T, K> selector, Func<T, K> parent_selector, 
+    public static List<T> GetLeaves<T, K>(this List<T> collection, Func<T, K> selector, Func<T, K> parent_selector,
+        K? start = default)
+    {
+        return collection.GetLeavesPrivate(selector, parent_selector, start)
+                         .Where(x => !EqualityComparer<K>.Default.Equals(selector(x), start))
+                         .ToList();
+    }
+
+    private static List<T> GetLeavesPrivate<T, K>(this List<T> collection, Func<T, K> selector, Func<T, K> parent_selector,
         K? start = default)
     {
         CheckParams(collection, selector, parent_selector);
@@ -147,7 +155,7 @@ public static class TreeSharpExtensions
         {
             foreach (T node in collection.GetChildren(selector, parent_selector, start, false, 1))
             {
-                inner = inner.Union(collection.GetLeaves(selector, parent_selector, selector(node))).ToList();
+                inner = inner.Union(collection.GetLeavesPrivate(selector, parent_selector, selector(node))).ToList();
             }
         }
         else

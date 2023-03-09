@@ -150,8 +150,8 @@ public class TreeSharpController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetLeaves(int? root)
+    public IActionResult GetLeaves(int? start)
     {
-        return Ok(nodes.GetLeaves(x => x.Id, x => x.ParentId, root));
+        return Ok(nodes.GetLeaves(x => x.Id, x => x.ParentId, start));
     }
 }
